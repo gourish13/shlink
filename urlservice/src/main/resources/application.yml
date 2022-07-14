@@ -1,0 +1,31 @@
+eureka:
+  instance:
+    hostname: ${server.address:0.0.0.0}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: "http://${eureka.instance.hostname}:8081/eureka/"
+      
+server:
+  port: 8083
+  address: 0.0.0.0
+  
+# Short Url expires after below time
+urls:
+  expiry:
+    seconds: 120
+    
+spring:
+  application:
+    name: url-service
+    
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+      
+  profiles:
+    active:
+    - dev
+ 

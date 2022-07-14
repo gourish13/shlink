@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: "jdbc:mariadb://localhost:3306/shlink"
+    username: gourish
+    password: 123456
+    driver-class-name: org.mariadb.jdbc.Driver
+    
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDB106Dialect
