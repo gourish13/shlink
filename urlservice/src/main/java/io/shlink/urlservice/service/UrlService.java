@@ -13,5 +13,6 @@ public interface UrlService {
 	Url updateLongUrl(String code, Url updatedUrl);
 	void deleteUrlByCode(String code);
 	void deleteAllForUser(Integer userId);
+	void deleteAllExpiredUrls();
 
 }

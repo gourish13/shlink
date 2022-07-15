@@ -86,4 +86,13 @@ public class UrlControllerImpl implements UrlController {
 		return urlService.fetchAllUrlsForUser(userId);
 	}
 
+	@Override
+	public ResponseEntity<?> deleteAllExpiredUrl() {
+		urlService.deleteAllExpiredUrls();
+		
+		logger.info("Deleted all expired URLs");
+		
+		return new ResponseEntity<Object>(null, HttpStatus.NO_CONTENT);
+	}
+
 }

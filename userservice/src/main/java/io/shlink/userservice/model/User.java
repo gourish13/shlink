@@ -19,7 +19,7 @@ public class User {
 	@Column(nullable = false)
 	private String password;
 	@Column(name = "admin_user", nullable = false)
-	private Boolean isAdmin;
+	private Boolean isAdmin = false;
 
 	public User() {
 		super();

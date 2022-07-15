@@ -20,6 +20,6 @@ public interface UrlRepository extends JpaRepository<Url, Long> {
 	@Transactional
 	void deleteAllByUserId(Integer userId);
 	@Transactional
-	void deleteByCreatedAtAfter(Timestamp expiryDate);
+	void deleteAllByCreatedAtBefore(Timestamp expiryDate);
 
 }

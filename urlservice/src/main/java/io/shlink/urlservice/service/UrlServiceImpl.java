@@ -92,4 +92,12 @@ public class UrlServiceImpl implements UrlService {
 		return urlRepository.findAllByUserId(userId);
 	}
 
+	@Override
+	public void deleteAllExpiredUrls() {
+		Timestamp expectedCreatedAt = new Timestamp(System.currentTimeMillis() 
+				- urlExpiryConfigurationProperty.getMilliSeconds());
+
+		urlRepository.deleteAllByCreatedAtBefore(expectedCreatedAt);
+	}
+
 }

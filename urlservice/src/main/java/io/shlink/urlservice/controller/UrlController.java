@@ -39,5 +39,8 @@ public interface UrlController {
 	
 	@RequestMapping(path = "/delete/for/user/{userId}", method = RequestMethod.DELETE)
 	ResponseEntity<String> deleteAllUrlsWithUserId(@PathVariable Integer userId);
+	
+	@DeleteMapping("/delete/expired")
+	ResponseEntity<?> deleteAllExpiredUrl();
 
 }
