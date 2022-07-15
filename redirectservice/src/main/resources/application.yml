@@ -8,7 +8,7 @@ eureka:
       defaultZone: "http://${eureka.instance.hostname}:8081/eureka/"
       
 management.endpoints.web.exposure.include: "*"
-management.endpoints.web.base-path: /
+management.endpoints.web.base-path: /actuator
 
 server:
   port: 8084

@@ -21,9 +21,14 @@ public class UrlInfoService {
 	@HystrixCommand(fallbackMethod = "getFallbackUrlInfoWithCode",
 			commandProperties = {
 					@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2000"),
-					@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "6"),
+					@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
 					@HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "50"),
 					@HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "6000")
+			},
+			threadPoolKey = "getUrlInfoFromUrlService",
+			threadPoolProperties = {
+					@HystrixProperty(name = "coreSize", value = "20"),
+					@HystrixProperty(name = "maxQueueSize", value = "10")
 			}
 	)
 	Optional<Url> getUrlInfoWithCode(String urlCode) {

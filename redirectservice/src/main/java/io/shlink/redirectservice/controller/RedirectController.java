@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.shlink.redirectservice.service.RedirectService;
 
 @RestController
-@RequestMapping("/redirect")
+//@RequestMapping("/redirect")
 public class RedirectController {
 	
 	@Autowired

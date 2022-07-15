@@ -25,9 +25,14 @@ public class UrlService {
 	@HystrixCommand(fallbackMethod = "fetchAllUrlInfoByUserIdFallback",
 			commandProperties = {
 					@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2000"),
-					@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "6"),
+					@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
 					@HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "50"),
 					@HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "6000")
+			},
+			threadPoolKey = "getAllUrlsForUserFromUrlService",
+			threadPoolProperties = {
+					@HystrixProperty(name = "coreSize", value = "20"),
+					@HystrixProperty(name = "maxQueueSize", value = "10")
 			}
 	)
 	public Optional<List<Url>> fetchAllUrlInfoByUserId(Integer id) {
@@ -47,9 +52,14 @@ public class UrlService {
 	@HystrixCommand(fallbackMethod = "deleteAllUrlsForUserFallback",
 			commandProperties = {
 					@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2000"),
-					@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "6"),
+					@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
 					@HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "50"),
 					@HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "6000")
+			},
+			threadPoolKey = "delelteAllUrlsForUserInUrlService",
+			threadPoolProperties = {
+					@HystrixProperty(name = "coreSize", value = "20"),
+					@HystrixProperty(name = "maxQueueSize", value = "10")
 			}
 	)
 	public ResponseEntity<?> deleteAllUrlsForUser(Integer id) {
